@@ -73,13 +73,24 @@ namespace advent_day3
                 oxyList.Add(line);
                 co2List.Add(line);
             }
-            Console.WriteLine(oxyList[0].Length);
+            Console.WriteLine(oxyList.Count);
 
 
-            for (int i = 0; i < oxyList[0].Length; i++) { oxyList = Shake(oxyList, mostCommon[i], i, true); }
-            for (int i = 0; i < co2List[0].Length; i++) { co2List = Shake(co2List, mostCommon[i], i, true); }
-            Console.WriteLine($"{oxyList.Count}  {co2List.Count}");
 
+            for (int i = 0; i < oxyList[0].Length; i++) 
+            {
+                oxyList = Shake(oxyList, mostCommon[i], i, true); 
+            }
+            for (int i = 0; i < co2List[0].Length; i++)
+            { 
+                co2List = Shake(co2List, mostCommon[i], i, false);             
+            }
+
+            int oxyDecimal = GetDecimal(oxyList[0]);
+            int co2Decimal = GetDecimal(co2List[0]);
+            Console.WriteLine($"{oxyDecimal} {co2Decimal}");
+
+            Console.WriteLine($"Lift support rating: {oxyDecimal * co2Decimal}");
 
             #endregion
         }
@@ -87,19 +98,45 @@ namespace advent_day3
         public static List<string> Shake(List<string> curList, float popular, int index, bool most)
         {
             if (curList.Count == 1) { return curList; }
+            Console.WriteLine($"Recieved list of {curList.Count} size");
+            Console.WriteLine($"Checking index {index} for {popular}");
             List<string> output = new List<string>();
+
+            Console.WriteLine("BEGIN SHAKE!");
 
             foreach (string line in curList)
             {
-                if (most == true)
+                if (most)
                 {
-                    if (line[index] == popular) { output.Add(line); }
+                    if (line[index].ToString() == popular.ToString()) 
+                    { 
+                        output.Add(line);
+                    }
                 }
                 else
                 {
-                    if (line[index] != popular) { output.Add(line); }
+                    if (line[index].ToString() != popular.ToString()) 
+                    { 
+                        output.Add(line); 
+                    }
                 }
             }
+            Console.WriteLine($"Returning List of {output.Count} size");
+
+            return output;
+        }
+
+        public static int GetDecimal(string binary)
+        {
+            Console.WriteLine($"Turning {binary} into decimal");
+            int output = 0;
+            int exp = 1;
+            for (int i = 0; i < binary.Length; i++)
+            {
+                if (binary[i] == '1') { output += exp; }
+                exp = exp * 2;S
+            }
+            Console.WriteLine($"Turned {binary} into {output}");
 
             return output;
         }
