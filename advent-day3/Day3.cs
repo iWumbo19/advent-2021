@@ -134,7 +134,7 @@ namespace advent_day3
             for (int i = 0; i < binary.Length; i++)
             {
                 if (binary[i] == '1') { output += exp; }
-                exp = exp * 2;S
+                exp = exp * 2;
             }
             Console.WriteLine($"Turned {binary} into {output}");
 
