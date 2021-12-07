@@ -34,8 +34,6 @@ namespace advent_day6
                 Console.WriteLine($"Day {days}: {initialFish.Count}");
             }
             Console.WriteLine($"Total Fish {initialFish.Count}");
-
-
         }
     }
 
