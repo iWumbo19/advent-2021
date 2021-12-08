@@ -49,11 +49,7 @@ namespace advent_day7
                 }
                 Console.WriteLine($"Position {x}: {totalFuel}");
             }
-
             Console.WriteLine($"Position {currentBestIndex}: {leastFuel}");
-
-
-
         }
     }
 }
