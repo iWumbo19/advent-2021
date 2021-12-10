@@ -8,10 +8,6 @@ namespace advent_day9
     {
         static void Main(string[] args)
         {
-            if ((1==1 ^ 1==0))
-            {
-                Console.WriteLine("Works");
-            }
             //Add all lines to List of List of ints  (Did you know chars as ints are the ascii value? I didn't)
             List<List<int>> mapLists = new List<List<int>>();
             foreach (string line in System.IO.File.ReadLines("day9-input")) 
